@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Our Institute</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background: #f8f9fa;
+      overflow-x: hidden;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar li {
+      margin: 0 20px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #f0f0f0;
+      border-bottom: 2px solid white;
+    }
+
+    /* Hero Section with Parallax Effect */
+    .hero {
+      height: 70vh;
+      background: url("D:/website/about us banner.jpg") no-repeat center center/cover;
+      background-attachment: fixed; /* This creates the parallax effect */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    .hero h1 {
+      position: relative;
+      font-size: 3.5rem;
+      text-align: center;
+      z-index: 1;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section General */
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 70px 20px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section p {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    /* Highlights Section */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
+    }
+    .highlight {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .highlight:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .highlight h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .highlight p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .cta h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+    .cta p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #f1f1f1;
+    }
+    .cta button {
+      background: #ff9800;
+      border: none;
+      padding: 15px 35px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+      transition: all 0.3s ease;
+      animation: pulse 1.5s infinite;
+    }
+    .cta button:hover {
+      background: #e68900;
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,152,0,0.6); }
+      70% { box-shadow: 0 0 0 20px rgba(255,152,0,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,152,0,0); }
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #aaa;
+      text-align: center;
+      padding: 25px;
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="index.html#contact">Contact Us</a></li>
+      <li><a href="#">More</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero with Parallax Effect -->
+  <div class="hero">
+    <h1>About Our Institute</h1>
+  </div>
+
+  <!-- Intro -->
+  <section class="reveal">
+    <p>
+      Our institute has been a trusted name in education for <strong>15 years</strong>. 
+      With a <strong>certified trainer</strong>, we focus on delivering 
+      <strong>100% practical classes</strong> that prepare students for real-world success.
+    </p>
+  </section>
+
+  <!-- Highlights -->
+  <section class="reveal">
+    <div class="highlights">
+      <div class="highlight">
+        <h2>15+ Years of Excellence</h2>
+        <p>We have been shaping careers with quality training and proven success stories.</p>
+      </div>
+      <div class="highlight">
+        <h2>Certified Trainer</h2>
+        <p>Learn from an expert trainer with professional certifications and experience.</p>
+      </div>
+      <div class="highlight">
+        <h2>100% Practical Classes</h2>
+        <p>We believe in hands-on training to ensure students gain real industry skills.</p>
+      </div>
+      <div class="highlight">
+        <h2>Weekend & Sunday Classes</h2>
+        <p>Flexible learning options designed for working professionals and students.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta reveal">
+    <h2>Ready to Start Your Journey?</h2>
+    <p>Join our practical training sessions and enhance your skills with the right guidance.</p>
+    <button onclick="window.location.href='contact.html'">Enroll Now</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 BS Computers. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll Animation
+    const reveals = document.querySelectorAll(".reveal");
+    window.addEventListener("scroll", () => {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("show");
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Our Institute</title>
+  <style>
+    /* ... existing styles ... */
+
+    /* Updated Highlight cards with different colors */
+    .highlight:nth-child(1) {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 1px solid #fcd34d;
+    }
+    .highlight:nth-child(2) {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 1px solid #93c5fd;
+    }
+    .highlight:nth-child(3) {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 1px solid #86efac;
+    }
+    .highlight:nth-child(4) {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      border: 1px solid #fca5a5;
+    }
+    
+    .highlight h2 {
+      color: #1f2937;
+    }
+    
+    .highlight p {
+      color: #374151;
+    }
+
+    /* Rest of your existing styles... */
+  </style>
+</head>
+<!-- Rest of your HTML remains the same -->
