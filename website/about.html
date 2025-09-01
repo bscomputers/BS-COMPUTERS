@@ -13,6 +13,40 @@
       overflow-x: hidden;
     }
 
+    /* Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar li {
+      margin: 0 20px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #f0f0f0;
+      border-bottom: 2px solid white;
+    }
+
     /* Hero Section with Parallax Effect */
     .hero {
       height: 70vh;
@@ -142,6 +176,16 @@
   </style>
 </head>
 <body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="index.html#contact">Contact Us</a></li>
+      <li><a href="#">More</a></li>
+    </ul>
+  </nav>
 
   <!-- Hero with Parallax Effect -->
   <div class="hero">
