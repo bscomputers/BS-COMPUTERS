@@ -47,7 +47,7 @@
       border-bottom: 2px solid white;
     }
 
-    /* Hero Section */
+    /* Hero Section with enhanced animation */
     .hero {
       height: 50vh;
       background: url("https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467_1280.jpg") no-repeat center center/cover;
@@ -58,29 +58,38 @@
       position: relative;
       color: white;
       margin-top: 0;
+      overflow: hidden;
     }
     
     .hero::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
+      background: linear-gradient(135deg, rgba(76, 0, 130, 0.7), rgba(0, 77, 77, 0.7));
+      animation: gradientShift 10s infinite alternate;
+    }
+    
+    @keyframes gradientShift {
+      0% { background: linear-gradient(135deg, rgba(76, 0, 130, 0.7), rgba(0, 77, 77, 0.7)); }
+      50% { background: linear-gradient(135deg, rgba(0, 77, 77, 0.7), rgba(76, 0, 130, 0.7)); }
+      100% { background: linear-gradient(135deg, rgba(76, 0, 130, 0.7), rgba(0, 77, 77, 0.7)); }
     }
     
     .hero h1 {
       position: relative;
-      font-size: 3rem;
+      font-size: 3.5rem;
       text-align: center;
       z-index: 1;
-      animation: fadeInDown 1.2s ease-out;
+      animation: fadeInDown 1.2s ease-out, glowText 2s infinite alternate;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    
+    @keyframes glowText {
+      from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+      to { text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5); }
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Section */
+    /* Section with improved animations */
     section {
       max-width: 1000px;
       margin: auto;
@@ -95,7 +104,7 @@
       transform: translateY(0);
     }
 
-    /* Contact Info */
+    /* Contact Info with colorful boxes */
     .contact-info {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -104,90 +113,180 @@
     }
     
     .info-box {
-      background: white;
       border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .info-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      opacity: 0.9;
+      transition: all 0.4s ease;
+    }
+    
+    .info-box:nth-child(1)::before {
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    }
+    
+    .info-box:nth-child(2)::before {
+      background: linear-gradient(135deg, #84fab0, #8fd3f4);
+    }
+    
+    .info-box:nth-child(3)::before {
+      background: linear-gradient(135deg, #fad0c4, #ffd1ff);
     }
     
     .info-box:hover {
-      transform: translateY(-8px);
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+    
+    .info-box:hover::before {
+      opacity: 1;
     }
     
     .info-box h3 {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       color: #222;
+      font-size: 1.5rem;
+      position: relative;
     }
     
     .info-box p {
-      color: #666;
-      font-size: 0.95rem;
+      color: #333;
+      font-size: 1rem;
+      position: relative;
     }
 
-    /* Contact Form */
+    /* Contact Form with gradient and animations */
     form {
       background: white;
       padding: 40px;
       border-radius: 16px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      animation: formAppear 1s ease-out;
+    }
+    
+    @keyframes formAppear {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(236, 240, 241, 0.9), rgba(255, 255, 255, 0.9));
+      z-index: -1;
     }
     
     form h2 {
-      margin-bottom: 20px;
-      font-size: 1.8rem;
+      margin-bottom: 25px;
+      font-size: 2rem;
       text-align: center;
+      color: #004d4d;
+      position: relative;
+    }
+    
+    form h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(to right, #004d4d, #3498db);
     }
     
     form .form-group {
       margin-bottom: 20px;
+      position: relative;
     }
     
     form input, form textarea {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
       border-radius: 8px;
       font-size: 1rem;
       outline: none;
-      transition: border 0.3s ease;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.9);
     }
     
     form input:focus, form textarea:focus {
-      border: 1px solid #3498db;
+      border-color: #3498db;
+      box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+      transform: translateY(-3px);
     }
     
     form textarea {
       resize: none;
-      height: 120px;
+      height: 140px;
     }
     
     form button {
-      background: #3498db;
+      background: linear-gradient(135deg, #004d4d, #3498db);
       color: white;
-      padding: 14px 30px;
+      padding: 15px 40px;
       border: none;
       border-radius: 30px;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       display: block;
-      margin: 0 auto;
+      margin: 10px auto 0;
+      box-shadow: 0 5px 15px rgba(0, 77, 77, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    form button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
     }
     
     form button:hover {
-      background: #2980b9;
-      transform: scale(1.05);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 77, 77, 0.6);
+    }
+    
+    form button:hover::before {
+      left: 100%;
     }
 
-    /* Footer */
+    /* Footer with gradient */
     footer {
-      background: #004d4d;
-      color: #aaa;
+      background: linear-gradient(135deg, #004d4d, #2c3e50);
+      color: #ddd;
       text-align: center;
-      padding: 25px;
-      margin-top: 50px;
+      padding: 30px;
+      margin-top: 70px;
     }
   </style>
 </head>
@@ -251,9 +350,10 @@
   </footer>
 
   <script>
-    // Scroll Animation - Matching the functionality from about page
+    // Enhanced Scroll Animation
     const reveals = document.querySelectorAll(".reveal");
-    window.addEventListener("scroll", () => {
+    
+    function checkReveal() {
       for (let i = 0; i < reveals.length; i++) {
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
@@ -262,8 +362,10 @@
           reveals[i].classList.add("show");
         }
       }
-    });
+    }
+    
+    window.addEventListener("scroll", checkReveal);
+    window.addEventListener("load", checkReveal);
   </script>
 </body>
 </html>
-
