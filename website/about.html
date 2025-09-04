@@ -47,11 +47,11 @@
       border-bottom: 2px solid white;
     }
 
-    /* Hero Section with Parallax Effect */
+    /* Hero Section with Enhanced Parallax Effect */
     .hero {
       height: 70vh;
-      background: url("https://as1.ftcdn.net/v2/jpg/02/68/48/86/1000_F_268488616_wcoB2JnGbOD2u3bpn2GPmu0KJQ4Ah66T.jpg") no-repeat center center/cover;
-      background-attachment: fixed; /* This creates the parallax effect */
+      background: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTl6dXMzemRpN3B1MmdoZXVqeGdqeTRidXp4MGF0aDJpMHVnMWFxNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZgTR3UQ9XAWDvqy9jv/giphy.gif") no-repeat center center/cover;
+      background-attachment: fixed;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -62,22 +62,31 @@
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
+      background: linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(0, 77, 77, 0.7));
+      animation: gradientShift 10s infinite alternate;
     }
+    
+    @keyframes gradientShift {
+      0% { background: linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(0, 77, 77, 0.7)); }
+      50% { background: linear-gradient(135deg, rgba(0, 77, 77, 0.7), rgba(44, 62, 80, 0.7)); }
+      100% { background: linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(0, 77, 77, 0.7)); }
+    }
+    
     .hero h1 {
       position: relative;
       font-size: 3.5rem;
       text-align: center;
       z-index: 1;
-      animation: fadeInUp 1.2s ease-out;
+      animation: fadeInUp 1.2s ease-out, glowText 2s infinite alternate;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    
+    @keyframes glowText {
+      from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+      to { text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5); }
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Section General */
+    /* Section General with enhanced styling */
     section {
       max-width: 1000px;
       margin: auto;
@@ -94,37 +103,95 @@
     section p {
       text-align: center;
       font-size: 1.2rem;
-      color: #555;
+      color: #444;
       line-height: 1.8;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+    
+    section p:hover {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      transform: translateY(-5px);
     }
 
-    /* Highlights Section */
+    /* Highlights Section with colorful cards */
     .highlights {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 25px;
       margin-top: 50px;
     }
+    
     .highlight {
-      background: white;
       border-radius: 16px;
       padding: 30px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
+    
+    .highlight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      opacity: 0.9;
+      transition: all 0.4s ease;
+    }
+    
+    .highlight:nth-child(1)::before {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+    }
+    
+    .highlight:nth-child(2)::before {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    }
+    
+    .highlight:nth-child(3)::before {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    }
+    
+    .highlight:nth-child(4)::before {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+    }
+    
     .highlight:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     }
+    
+    .highlight:hover::before {
+      opacity: 1;
+    }
+    
     .highlight h2 {
       font-size: 1.6rem;
-      margin-bottom: 10px;
-      color: #222;
+      margin-bottom: 15px;
+      color: #1f2937;
+      position: relative;
     }
+    
     .highlight p {
       font-size: 1rem;
-      color: #666;
+      color: #374151;
+      position: relative;
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+    }
+    
+    .highlight p:hover {
+      box-shadow: none;
+      transform: none;
     }
 
     /* CTA Section */
@@ -252,44 +319,4 @@
 
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - Our Institute</title>
-  <style>
-    /* ... existing styles ... */
-
-    /* Updated Highlight cards with different colors */
-    .highlight:nth-child(1) {
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
-      border: 1px solid #fcd34d;
-    }
-    .highlight:nth-child(2) {
-      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-      border: 1px solid #93c5fd;
-    }
-    .highlight:nth-child(3) {
-      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-      border: 1px solid #86efac;
-    }
-    .highlight:nth-child(4) {
-      background: linear-gradient(135deg, #fee2e2, #fecaca);
-      border: 1px solid #fca5a5;
-    }
-    
-    .highlight h2 {
-      color: #1f2937;
-    }
-    
-    .highlight p {
-      color: #374151;
-    }
-
-    /* Rest of your existing styles... */
-  </style>
-</head>
-<!-- Rest of your HTML remains the same -->
-
 
