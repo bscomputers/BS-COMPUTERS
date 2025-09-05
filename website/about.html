@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - Our Institute</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       margin: 0;
@@ -13,41 +15,9 @@
       overflow-x: hidden;
     }
 
-    /* Navigation Bar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 15px 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-    }
+    /* Navigation Bar - Removed */
 
-    .navbar ul {
-      display: flex;
-      list-style: none;
-    }
-
-    .navbar li {
-      margin: 0 20px;
-    }
-
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    .navbar a:hover {
-      color: #f0f0f0;
-      border-bottom: 2px solid white;
-    }
-
-    /* Hero Section with Enhanced Parallax Effect */
+    /* Hero Section with Enhanced Parallax Effect - Updated margin-top */
     .hero {
       height: 70vh;
       background: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTl6dXMzemRpN3B1MmdoZXVqeGdqeTRidXp4MGF0aDJpMHVnMWFxNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZgTR3UQ9XAWDvqy9jv/giphy.gif") no-repeat center center/cover;
@@ -57,6 +27,27 @@
       justify-content: center;
       position: relative;
       color: white;
+    }
+    .hero-content {
+      text-align: center;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      position: relative;
+      font-size: 4rem;
+      margin-bottom: 10px;
+      animation: fadeInUp 1.2s ease-out, glowText 2s infinite alternate;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    
+    .hero h2 {
+      position: relative;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-top: 0;
+      animation: fadeInUp 1.2s ease-out 0.3s backwards, glowText 2s infinite alternate;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
     .hero::before {
       content: "";
@@ -72,18 +63,43 @@
       100% { background: linear-gradient(135deg, rgba(44, 62, 80, 0.7), rgba(0, 77, 77, 0.7)); }
     }
     
-    .hero h1 {
-      position: relative;
-      font-size: 3.5rem;
-      text-align: center;
-      z-index: 1;
-      animation: fadeInUp 1.2s ease-out, glowText 2s infinite alternate;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     @keyframes glowText {
       from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
       to { text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5); }
+    }
+    
+    /* Scroll Button */
+    .scroll-btn {
+      margin-top: 25px;
+      padding: 12px 25px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid white;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      animation: fadeInUp 1.2s ease-out 0.5s backwards;
+    }
+    
+    .scroll-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
+    
+    .scroll-btn.active {
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      border-color: transparent;
     }
 
     /* Section General with enhanced styling */
@@ -240,23 +256,97 @@
       padding: 25px;
       margin-top: 0;
     }
+    
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 350px;
+      height: 70px;
+      background: #fff;
+      border-radius: 35px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .bottom-nav a {
+      position: relative;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      color: #777;
+      font-size: 12px;
+      transition: 0.3s;
+      flex-direction: column;
+    }
+
+    .bottom-nav a .icon {
+      font-size: 22px;
+      transition: 0.3s;
+    }
+
+    .bottom-nav a.active {
+      color: #004d4d;
+    }
+
+    .bottom-nav a.active .icon {
+      background: #ec0606;
+      color: #fff;
+      border-radius: 50%;
+      padding: 15px;
+      transform: translateY(-20px);
+      font-size: 22px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .bottom-nav a span {
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="#">More</a></li>
-    </ul>
-  </nav>
+  <!-- Navigation Bar - Removed -->
+  
+  <!-- Bottom Navigation Bar -->
+  <div class="bottom-nav">
+    <a href="index.html">
+      <i class="fas fa-home icon"></i>
+      <span>Home</span>
+    </a>
+    <a href="courses.html">
+      <i class="fas fa-book icon"></i>
+      <span>Courses</span>
+    </a>
+    <a href="about.html" class="active">
+      <i class="fas fa-info-circle icon"></i>
+      <span>About</span>
+    </a>
+    <a href="contact.html">
+      <i class="fas fa-envelope icon"></i>
+      <span>Contact</span>
+    </a>
+    <a href="#">
+      <i class="fas fa-bars icon"></i>
+      <span>More</span>
+    </a>
+  </div>
 
   <!-- Hero with Parallax Effect -->
   <div class="hero">
-    <h1>About Our Institute</h1>
+    <div class="hero-content">
+      <h1>About Our Institute</h1>
+      <h2>Excellence in Professional Training</h2>
+      <button id="scrollBtn" class="scroll-btn">Learn More</button>
+    </div>
   </div>
 
   <!-- Intro -->
@@ -314,6 +404,25 @@
           reveals[i].classList.add("show");
         }
       }
+    });
+    
+    // Scroll Button Functionality
+    document.getElementById("scrollBtn").addEventListener("click", function() {
+      // Change button color by toggling active class
+      this.classList.toggle("active");
+      
+      // Scroll to the first section
+      const firstSection = document.querySelector("section");
+      firstSection.scrollIntoView({ behavior: "smooth" });
+    });
+    
+    // Bottom Navigation Bar Script
+    const links = document.querySelectorAll('.bottom-nav a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
     });
   </script>
 
