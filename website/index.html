@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BS COMPUTERS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* Reset */
     * {
@@ -18,38 +19,60 @@
       color: #333;
     }
 
-    /* Navigation Bar */
-    .navbar {
+    /* Navigation Bar - Top - Removed */
+
+    /* Bottom Navigation Bar */
+    .bottom-nav {
       position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 15px 0;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 350px;
+      height: 70px;
+      background: #fff;
+      border-radius: 35px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       z-index: 1000;
+    }
+
+    .bottom-nav a {
+      position: relative;
+      width: 70px;
+      height: 70px;
       display: flex;
       justify-content: center;
-    }
-
-    .navbar ul {
-      display: flex;
-      list-style: none;
-    }
-
-    .navbar li {
-      margin: 0 20px;
-    }
-
-    .navbar a {
-      color: white;
+      align-items: center;
       text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: bold;
-      transition: color 0.3s ease;
+      color: #777;
+      font-size: 12px;
+      transition: 0.3s;
+      flex-direction: column;
     }
 
-    .navbar a:hover {
-      color: #f0f0f0;
-      border-bottom: 2px solid white;
+    .bottom-nav a .icon {
+      font-size: 22px;
+      transition: 0.3s;
+    }
+
+    .bottom-nav a.active {
+      color: #004d4d;
+    }
+
+    .bottom-nav a.active .icon {
+      background: #da0404;
+      color: #fff;
+      border-radius: 50%;
+      padding: 15px;
+      transform: translateY(-20px);
+      font-size: 22px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .bottom-nav a span {
+      margin-top: 5px;
     }
 
     /* Parallax Background */
@@ -190,15 +213,31 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="#">More</a></li>
-    </ul>
-  </nav>
+  <!-- Navigation Bar - Top - Removed -->
+
+  <!-- Bottom Navigation Bar -->
+  <div class="bottom-nav">
+    <a href="index.html" class="active">
+      <i class="fas fa-home icon"></i>
+      <span>Home</span>
+    </a>
+    <a href="courses.html">
+      <i class="fas fa-book icon"></i>
+      <span>Courses</span>
+    </a>
+    <a href="about.html">
+      <i class="fas fa-info-circle icon"></i>
+      <span>About</span>
+    </a>
+    <a href="contact.html">
+      <i class="fas fa-envelope icon"></i>
+      <span>Contact</span>
+    </a>
+    <a href="#">
+      <i class="fas fa-bars icon"></i>
+      <span>More</span>
+    </a>
+  </div>
 
   <!-- Hero Parallax Section -->
   <div class="parallax">
@@ -300,3 +339,13 @@
 
 </body>
 </html>
+
+  <script>
+    const links = document.querySelectorAll('.bottom-nav a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
